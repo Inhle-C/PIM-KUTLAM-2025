@@ -1,0 +1,516 @@
+---> Python Script Start 2025-09-20 12:27:05.331828
+---> initial data set up
+---> the parameters
+---> doing 2023-01-03
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9608, -0.2598, -1.1799, -1.8612, -2.7969, -3.7052, -4.1806, -4.3167]
+    Sharpe ratios: [1.1553, 0.177, 0.126, 0.1069, 0.0836, 0.0647, 0.0577, 0.0489]
+    Volatilities: [0.0235, 0.1644, 0.2586, 0.3103, 0.4077, 0.5203, 0.575, 0.6408]
+    Initial portfolio duration: 3.4359
+    ALBI duration: 6.0700
+    Duration difference: 2.6341
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.057', '0.143', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.9693
+    ALBI duration: 6.0700
+---> doing 2023-01-04
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9606, -0.2598, -1.1797, -1.8611, -2.7968, -3.7051, -4.1805, -4.3165]
+    Sharpe ratios: [1.1549, 0.177, 0.1264, 0.1072, 0.0839, 0.0649, 0.058, 0.0491]
+    Volatilities: [0.0236, 0.1644, 0.2587, 0.3104, 0.4078, 0.5203, 0.5751, 0.6409]
+    Initial portfolio duration: 3.4442
+    ALBI duration: 6.0800
+    Duration difference: 2.6358
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.057', '0.143', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.9893
+    ALBI duration: 6.0800
+---> doing 2023-01-05
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9606, -0.2597, -1.1796, -1.861, -2.7967, -3.705, -4.1804, -4.3165]
+    Sharpe ratios: [1.1549, 0.1772, 0.1267, 0.1075, 0.0841, 0.0651, 0.0581, 0.0492]
+    Volatilities: [0.0236, 0.1644, 0.2587, 0.3104, 0.4077, 0.5203, 0.575, 0.6408]
+    Initial portfolio duration: 3.4497
+    ALBI duration: 6.0900
+    Duration difference: 2.6403
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.061', '0.139', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.9975
+    ALBI duration: 6.0900
+---> doing 2023-01-06
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9607, -0.2597, -1.1797, -1.861, -2.7968, -3.705, -4.1805, -4.3164]
+    Sharpe ratios: [1.155, 0.1772, 0.1266, 0.1074, 0.084, 0.0651, 0.0581, 0.0492]
+    Volatilities: [0.0236, 0.1643, 0.2587, 0.3104, 0.4077, 0.5202, 0.5749, 0.6407]
+    Initial portfolio duration: 3.4484
+    ALBI duration: 6.0800
+    Duration difference: 2.6316
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.012', '0.099', '0.141', '0.163', '0.200', '0.192', '0.194']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.8585
+    ALBI duration: 6.0800
+---> doing 2023-01-09
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9607, -0.2598, -1.1796, -1.8609, -2.7967, -3.705, -4.1804, -4.3164]
+    Sharpe ratios: [1.1552, 0.1769, 0.1269, 0.1076, 0.0841, 0.0652, 0.0582, 0.0493]
+    Volatilities: [0.0236, 0.1643, 0.2587, 0.3104, 0.4077, 0.5202, 0.5749, 0.6407]
+    Initial portfolio duration: 3.4527
+    ALBI duration: 6.0900
+    Duration difference: 2.6373
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.095', '0.146', '0.160', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.9391
+    ALBI duration: 6.0900
+---> doing 2023-01-10
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9608, -0.2597, -1.1794, -1.8608, -2.7965, -3.7048, -4.1802, -4.3162]
+    Sharpe ratios: [1.1555, 0.1772, 0.1275, 0.1082, 0.0847, 0.0657, 0.0587, 0.0499]
+    Volatilities: [0.0236, 0.1643, 0.2589, 0.3106, 0.408, 0.5206, 0.5753, 0.6411]
+    Initial portfolio duration: 3.4733
+    ALBI duration: 6.1400
+    Duration difference: 2.6667
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.031', '0.169', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0749
+    ALBI duration: 6.1400
+---> doing 2023-01-11
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9608, -0.2598, -1.1795, -1.8609, -2.7967, -3.7049, -4.1804, -4.3163]
+    Sharpe ratios: [1.1555, 0.1771, 0.1271, 0.1079, 0.0844, 0.0654, 0.0585, 0.0496]
+    Volatilities: [0.0236, 0.1643, 0.2589, 0.3107, 0.408, 0.5206, 0.5753, 0.6412]
+    Initial portfolio duration: 3.4633
+    ALBI duration: 6.1100
+    Duration difference: 2.6467
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.047', '0.153', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0397
+    ALBI duration: 6.1100
+---> doing 2023-01-12
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9608, -0.2597, -1.1795, -1.8608, -2.7966, -3.7049, -4.1803, -4.3163]
+    Sharpe ratios: [1.1555, 0.1771, 0.1272, 0.1079, 0.0844, 0.0655, 0.0585, 0.0497]
+    Volatilities: [0.0236, 0.1643, 0.2589, 0.3106, 0.408, 0.5206, 0.5753, 0.6411]
+    Initial portfolio duration: 3.4649
+    ALBI duration: 6.1200
+    Duration difference: 2.6551
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.047', '0.153', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0447
+    ALBI duration: 6.1200
+---> doing 2023-01-13
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9608, -0.2597, -1.1794, -1.8607, -2.7965, -3.7048, -4.1802, -4.3161]
+    Sharpe ratios: [1.1556, 0.1773, 0.1276, 0.1083, 0.0847, 0.0658, 0.0588, 0.05]
+    Volatilities: [0.0236, 0.1643, 0.259, 0.3107, 0.408, 0.5206, 0.5753, 0.6412]
+    Initial portfolio duration: 3.4766
+    ALBI duration: 6.1500
+    Duration difference: 2.6734
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.025', '0.175', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0870
+    ALBI duration: 6.1500
+---> doing 2023-01-16
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9609, -0.2597, -1.1795, -1.8608, -2.7965, -3.7048, -4.1803, -4.3162]
+    Sharpe ratios: [1.1557, 0.1772, 0.1274, 0.1082, 0.0846, 0.0657, 0.0587, 0.0499]
+    Volatilities: [0.0235, 0.1643, 0.259, 0.3107, 0.408, 0.5206, 0.5753, 0.6412]
+    Initial portfolio duration: 3.4722
+    ALBI duration: 6.1200
+    Duration difference: 2.6478
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.024', '0.176', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0757
+    ALBI duration: 6.1200
+---> doing 2023-01-17
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9609, -0.2597, -1.1795, -1.8609, -2.7966, -3.7049, -4.1804, -4.3164]
+    Sharpe ratios: [1.1558, 0.1773, 0.1273, 0.108, 0.0844, 0.0654, 0.0583, 0.0495]
+    Volatilities: [0.0236, 0.1643, 0.259, 0.3107, 0.408, 0.5206, 0.5754, 0.6413]
+    Initial portfolio duration: 3.4626
+    ALBI duration: 6.0800
+    Duration difference: 2.6174
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.045', '0.155', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0348
+    ALBI duration: 6.0800
+---> doing 2023-01-18
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9609, -0.2597, -1.1796, -1.8609, -2.7967, -3.705, -4.1805, -4.3164]
+    Sharpe ratios: [1.1559, 0.1772, 0.1272, 0.1079, 0.0844, 0.0654, 0.0583, 0.0495]
+    Volatilities: [0.0236, 0.1643, 0.2589, 0.3106, 0.4079, 0.5206, 0.5753, 0.6412]
+    Initial portfolio duration: 3.4605
+    ALBI duration: 6.0700
+    Duration difference: 2.6095
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.077', '0.148', '0.175', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.9819
+    ALBI duration: 6.0700
+---> doing 2023-01-19
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.961, -0.2596, -1.1794, -1.8608, -2.7965, -3.7048, -4.1803, -4.3163]
+    Sharpe ratios: [1.156, 0.1774, 0.1277, 0.1085, 0.085, 0.0659, 0.0588, 0.0499]
+    Volatilities: [0.0235, 0.1642, 0.2591, 0.3109, 0.4082, 0.5208, 0.5756, 0.6414]
+    Initial portfolio duration: 3.4793
+    ALBI duration: 6.1100
+    Duration difference: 2.6307
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.039', '0.161', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0793
+    ALBI duration: 6.1100
+---> doing 2023-01-20
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.961, -0.2597, -1.1795, -1.8609, -2.7966, -3.7049, -4.1804, -4.3164]
+    Sharpe ratios: [1.156, 0.1773, 0.1274, 0.1082, 0.0847, 0.0657, 0.0585, 0.0496]
+    Volatilities: [0.0235, 0.1642, 0.2591, 0.3109, 0.4082, 0.5208, 0.5756, 0.6415]
+    Initial portfolio duration: 3.4713
+    ALBI duration: 6.0700
+    Duration difference: 2.5987
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.041', '0.159', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0575
+    ALBI duration: 6.0700
+---> doing 2023-01-23
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.961, -0.2596, -1.1796, -1.8609, -2.7967, -3.705, -4.1805, -4.3164]
+    Sharpe ratios: [1.1562, 0.1777, 0.1272, 0.1081, 0.0847, 0.0655, 0.0585, 0.0496]
+    Volatilities: [0.0235, 0.1643, 0.2591, 0.3109, 0.4082, 0.5208, 0.5756, 0.6414]
+    Initial portfolio duration: 3.4680
+    ALBI duration: 6.0600
+    Duration difference: 2.5920
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.045', '0.155', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0466
+    ALBI duration: 6.0600
+---> doing 2023-01-24
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9611, -0.2595, -1.1797, -1.861, -2.7967, -3.705, -4.1805, -4.3165]
+    Sharpe ratios: [1.1563, 0.1778, 0.1272, 0.108, 0.0846, 0.0655, 0.0584, 0.0495]
+    Volatilities: [0.0235, 0.1643, 0.2591, 0.3109, 0.4082, 0.5207, 0.5755, 0.6414]
+    Initial portfolio duration: 3.4651
+    ALBI duration: 6.0500
+    Duration difference: 2.5849
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.107', '0.159', '0.200', '0.200', '0.200', '0.134', '0.000']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 4.8500
+    ALBI duration: 6.0500
+---> doing 2023-01-25
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9611, -0.2595, -1.1796, -1.8609, -2.7967, -3.7049, -4.1804, -4.3164]
+    Sharpe ratios: [1.1564, 0.1778, 0.1274, 0.1082, 0.0847, 0.0657, 0.0586, 0.0497]
+    Volatilities: [0.0235, 0.1643, 0.2591, 0.3108, 0.4081, 0.5207, 0.5755, 0.6413]
+    Initial portfolio duration: 3.4705
+    ALBI duration: 6.0600
+    Duration difference: 2.5895
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.067', '0.071', '0.134', '0.200', '0.200', '0.191', '0.137']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.6403
+    ALBI duration: 6.0600
+---> doing 2023-01-26
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9611, -0.2594, -1.1795, -1.8608, -2.7966, -3.7048, -4.1803, -4.3163]
+    Sharpe ratios: [1.1565, 0.1779, 0.1275, 0.1084, 0.0849, 0.066, 0.0589, 0.05]
+    Volatilities: [0.0235, 0.1642, 0.2591, 0.3108, 0.4081, 0.5207, 0.5755, 0.6414]
+    Initial portfolio duration: 3.4790
+    ALBI duration: 6.1000
+    Duration difference: 2.6210
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.019', '0.050', '0.131', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0300
+    ALBI duration: 6.1000
+---> doing 2023-01-27
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9612, -0.2594, -1.1794, -1.8608, -2.7965, -3.7047, -4.1803, -4.3162]
+    Sharpe ratios: [1.1566, 0.178, 0.1277, 0.1086, 0.0851, 0.066, 0.059, 0.0501]
+    Volatilities: [0.0235, 0.1642, 0.2591, 0.3108, 0.4081, 0.5206, 0.5755, 0.6413]
+    Initial portfolio duration: 3.4832
+    ALBI duration: 6.2100
+    Duration difference: 2.7268
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.009', '0.077', '0.066', '0.136', '0.200', '0.200', '0.200', '0.113']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.5574
+    ALBI duration: 6.2100
+---> doing 2023-01-30
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9612, -0.2594, -1.1795, -1.8608, -2.7966, -3.7048, -4.1804, -4.3163]
+    Sharpe ratios: [1.1566, 0.178, 0.1276, 0.1084, 0.085, 0.0659, 0.0587, 0.0498]
+    Volatilities: [0.0235, 0.1642, 0.259, 0.3108, 0.4081, 0.5206, 0.5755, 0.6414]
+    Initial portfolio duration: 3.4767
+    ALBI duration: 6.1800
+    Duration difference: 2.7033
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.020', '0.104', '0.115', '0.174', '0.200', '0.200', '0.184', '0.004']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 4.9800
+    ALBI duration: 6.1800
+---> doing 2023-01-31
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9612, -0.2594, -1.1795, -1.8609, -2.7966, -3.7049, -4.1804, -4.3164]
+    Sharpe ratios: [1.1567, 0.178, 0.1276, 0.1084, 0.0849, 0.0658, 0.0586, 0.0496]
+    Volatilities: [0.0235, 0.1642, 0.259, 0.3108, 0.408, 0.5206, 0.5754, 0.6413]
+    Initial portfolio duration: 3.4724
+    ALBI duration: 6.1500
+    Duration difference: 2.6776
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.034', '0.044', '0.121', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.9769
+    ALBI duration: 6.1500
+---> doing 2023-02-01
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9612, -0.2594, -1.1795, -1.8608, -2.7966, -3.7048, -4.1804, -4.3164]
+    Sharpe ratios: [1.1568, 0.1781, 0.1277, 0.1085, 0.085, 0.0658, 0.0587, 0.0497]
+    Volatilities: [0.0235, 0.1642, 0.259, 0.3107, 0.408, 0.5205, 0.5754, 0.6412]
+    Initial portfolio duration: 3.4744
+    ALBI duration: 6.1500
+    Duration difference: 2.6756
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.008', '0.052', '0.140', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0355
+    ALBI duration: 6.1500
+---> doing 2023-02-02
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9612, -0.2593, -1.1794, -1.8607, -2.7965, -3.7047, -4.1803, -4.3163]
+    Sharpe ratios: [1.1568, 0.1781, 0.1279, 0.1087, 0.0852, 0.066, 0.0589, 0.0499]
+    Volatilities: [0.0235, 0.1641, 0.259, 0.3107, 0.408, 0.5205, 0.5754, 0.6412]
+    Initial portfolio duration: 3.4811
+    ALBI duration: 6.1700
+    Duration difference: 2.6889
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.045', '0.120', '0.092', '0.136', '0.182', '0.200', '0.200', '0.025']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 4.9700
+    ALBI duration: 6.1700
+---> doing 2023-02-03
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9612, -0.2593, -1.1793, -1.8606, -2.7964, -3.7046, -4.1802, -4.3162]
+    Sharpe ratios: [1.1569, 0.1782, 0.1281, 0.109, 0.0855, 0.0663, 0.0591, 0.0501]
+    Volatilities: [0.0235, 0.1641, 0.259, 0.3108, 0.408, 0.5205, 0.5754, 0.6412]
+    Initial portfolio duration: 3.4902
+    ALBI duration: 6.1900
+    Duration difference: 2.6998
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.000', '0.052', '0.148', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0925
+    ALBI duration: 6.1900
+---> doing 2023-02-06
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.961, -0.2592, -1.1795, -1.8608, -2.7965, -3.7047, -4.1803, -4.3163]
+    Sharpe ratios: [1.1563, 0.1783, 0.1276, 0.1085, 0.0852, 0.066, 0.0589, 0.0499]
+    Volatilities: [0.0235, 0.1641, 0.2591, 0.3108, 0.4081, 0.5205, 0.5754, 0.6413]
+    Initial portfolio duration: 3.4804
+    ALBI duration: 6.1600
+    Duration difference: 2.6796
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.000', '0.018', '0.055', '0.127', '0.200', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 6.0283
+    ALBI duration: 6.1600
+---> doing 2023-02-07
+    Selected bonds: ['SAGB_00_25 Bond', 'SAGB_02_00 Bond', 'SAGB_04_00 Bond', 'SAGB_05_00 Bond', 'SAGB_07_00 Bond', 'SAGB_10_00 Bond', 'SAGB_12_00 Bond', 'SAGB_15_00 Bond']
+    Stability scores: [0.9611, -0.2593, -1.1797, -1.8609, -2.7966, -3.7048, -4.1804, -4.3164]
+    Sharpe ratios: [1.1565, 0.1782, 0.1272, 0.1082, 0.0849, 0.0658, 0.0587, 0.0496]
+    Volatilities: [0.0235, 0.1641, 0.2591, 0.3109, 0.4081, 0.5205, 0.5754, 0.6413]
+    Initial portfolio duration: 3.4708
+    ALBI duration: 6.1200
+    Duration difference: 2.6492
+    Active MD limit: 1.2
+    Duration constraint violated, running optimization...
+    Duration constraint applied - optimization success: True
+    Selected bond weights: ['0.015', '0.060', '0.040', '0.095', '0.191', '0.200', '0.200', '0.200']
+    Original custom weights: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Normalized weights used: ['0.200', '0.200', '0.150', '0.150', '0.100', '0.100', '0.050', '0.050']
+    Total weight: 1.0000
+    Selected bonds total: 1.0000
+    Portfolio duration: 5.8538
+    ALBI duration: 6.1200
+---> doing 2023-02-08
+Traceback (most recent call last):
+  File "/mnt/c/Users/Inhle/OneDrive - University of Cape Town/2025/PIM- team KUT/PIM-KUTLAM-2025/solution.py", line 80, in <module>
+    df_train_bonds['md_per_conv'] = df_train_bonds.groupby(['bond_code'])['return'].transform(lambda x: x.rolling(window=n_days).mean()) * df_train_bonds['convexity'] / df_train_bonds['modified_duration'] #100 day moving avg
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/groupby/generic.py", line 517, in transform
+    return self._transform(
+           ^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/groupby/groupby.py", line 2021, in _transform
+    return self._transform_general(func, engine, engine_kwargs, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/groupby/generic.py", line 557, in _transform_general
+    res = func(group, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/Inhle/OneDrive - University of Cape Town/2025/PIM- team KUT/PIM-KUTLAM-2025/solution.py", line 80, in <lambda>
+    df_train_bonds['md_per_conv'] = df_train_bonds.groupby(['bond_code'])['return'].transform(lambda x: x.rolling(window=n_days).mean()) * df_train_bonds['convexity'] / df_train_bonds['modified_duration'] #100 day moving avg
+                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/window/rolling.py", line 2259, in mean
+    return super().mean(
+           ^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/window/rolling.py", line 1625, in mean
+    return self._apply(window_func, name="mean", numeric_only=numeric_only)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/window/rolling.py", line 619, in _apply
+    return self._apply_columnwise(homogeneous_func, name, numeric_only)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/window/rolling.py", line 472, in _apply_columnwise
+    return self._apply_series(homogeneous_func, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/window/rolling.py", line 456, in _apply_series
+    result = homogeneous_func(values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/window/rolling.py", line 614, in homogeneous_func
+    result = calc(values)
+             ^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/window/rolling.py", line 602, in calc
+    start, end = window_indexer.get_window_bounds(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/inhle/.local/lib/python3.12/site-packages/pandas/core/indexers/objects.py", line 117, in get_window_bounds
+    end = np.clip(end, 0, num_values)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/numpy/core/fromnumeric.py", line 2096, in _clip_dispatcher
+    def _clip_dispatcher(a, a_min, a_max, out=None, **kwargs):
+    
+KeyboardInterrupt

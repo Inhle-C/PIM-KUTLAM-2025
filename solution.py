@@ -52,11 +52,12 @@ weight_matrix = pd.DataFrame()
 
 # static data for optimisation and signal generation
 n_days = 10
-n_selected_bonds = 4  # Select top 4 bonds
-target_allocation = 0.5  # 50% allocation to selected bonds --macros will be used to decide the other allocation
-prev_weights = [0.1]*10  # Initialize with zeros
+prev_weights = [0.1]*10
 p_active_md = 1.2 # this can be set to your own limit, as long as the portfolio is capped at 1.5 on any given day
 weight_bounds = (0.0, 0.2)
+eps = 1e-9
+
+#print("Unique bond_code values:", sorted(df_bonds['bond_code'].unique()))
 
 for i in range(len(df_signals)):
 
@@ -75,22 +76,62 @@ for i in range(len(df_signals)):
     p_albi_md = df_train_albi['modified_duration'].tail(1)
 
     # feature engineering
-    df_train_macro['steepness'] = df_train_macro['us_10y'] - df_train_macro['us_2y'] # 10 yr - 2 yr (long term - short term) if too flat, we might have a recession coming/equiliberium
-    df_train_bonds['md_per_conv'] = df_train_bonds.groupby(['bond_code'])['return'].transform(lambda x: x.rolling(window=n_days).mean()) * df_train_bonds['convexity'] / df_train_bonds['modified_duration'] #100 day moving avg
-    df_train_bonds = df_train_bonds.merge(df_train_macro, how='left', on = 'datestamp') #optimize lamda?
-    df_train_bonds['signal'] = df_train_bonds['md_per_conv']*100 - df_train_bonds['top40_return']/10 + df_train_bonds['comdty_fut']/100 #come change this signal to something else
+    df_train_macro['jse_change'] = df_train_macro['top40_return'] # changing name
+    jse_yesterday = df_train_macro['jse_change'].iloc[-1] # single value for cjange, yesterday's value
+    df_train_macro['us_steepness'] = df_train_macro['us_10y'] - df_train_macro['us_2y'] 
+    df_train_macro['us_10yr_change'] = df_train_macro['us_10y'].diff()
+    df_train_macro['us_2yr_change'] = df_train_macro['us_2y'].diff()
+    df_train_macro['us_diff_steepness'] = df_train_macro['us_steepness'].diff()
+    # get single values we need
+    us_10yr_change_yesterday = df_train_macro['us_10yr_change'].iloc[-1]
+    us_slope_change_yesterday = df_train_macro['us_diff_steepness'].iloc[-1]
+
+    # consider commodity futures change
+    df_train_macro['comdty_chg'] = df_train_macro['comdty_fut'].pct_change()
+    comdty_change_yesterday = df_train_macro['comdty_chg'].iloc[-1]
+
+    # get yield momentum
+    df_train_bonds['yield_ma5']  = df_train_bonds.groupby('bond_code')['yield'].transform(lambda x: x.rolling(5).mean())
+    df_train_bonds['yield_ma20'] = df_train_bonds.groupby('bond_code')['yield'].transform(lambda x: x.rolling(20).mean())
+    df_train_bonds['yield_mom']  = df_train_bonds['yield_ma5'] - df_train_bonds['yield_ma20']
+
+    # get std dev
+    df_train_bonds['ret_vol_20'] = df_train_bonds.groupby('bond_code')['return'].transform(lambda x: x.rolling(20).std())
+
+    # get price shock
+    df_train_bonds['ret_shock'] = df_train_bonds.groupby('bond_code')['return'].transform(
+    lambda x: (x - x.rolling(20).mean()) / (x.rolling(20).std() + eps)
+    )
+
+    # get duration spike
+    #eps = 1e-9
+    df_train_bonds['md_spike'] = df_train_bonds.groupby('bond_code')['modified_duration'].transform(
+    lambda x: (x - x.rolling(20).mean()) / (x.rolling(20).std() + eps)
+    )
+
+    # convert all the above yield change indicators into one yield change
+    yhat_dy = (
+    -0.40 * jse_yesterday                # equities down → yields down → negative dy
+    + 0.30 * us_10yr_change_yesterday         # US10y up → SA yields up
+    + 0.15 * us_slope_change_yesterday       # steepening → yields up
+    + 0.10 * (0 if pd.isna(comdty_change_yesterday) else comdty_change_yesterday)  # commodities up → yields up
+    )
+
+    # now need to add this to traning data for bonds
+    df_train_bonds = df_train_bonds.merge(df_train_macro[['datestamp']], on='datestamp', how='left')  # already merged earlier in your code
+    df_train_bonds['signal'] = (
+    - df_train_bonds['modified_duration'] * yhat_dy
+    + 0.5 * df_train_bonds['convexity'] * (yhat_dy**2)   # optional convexity term
+    + 0.10 * (-df_train_bonds['yield_mom'])    # yields falling (neg mom) → bullish prices
+    - 0.05 * df_train_bonds['ret_vol_20']      # prefer stable bonds
+    - 0.05 * df_train_bonds['md_spike'].clip(lower=0)  # penalize positive duration spikes
+    )
+
+
+    #df_train_bonds['md_per_conv'] = df_train_bonds.groupby(['bond_code'])['return'].transform(lambda x: x.rolling(window=n_days).mean()) * df_train_bonds['convexity'] / df_train_bonds['modified_duration']
+    #df_train_bonds = df_train_bonds.merge(df_train_macro, how='left', on = 'datestamp')
+    #df_train_bonds['signal'] = df_train_bonds['md_per_conv']*100 - df_train_bonds['top40_return']/10 + df_train_bonds['comdty_fut']/100
     df_train_bonds_current = df_train_bonds[df_train_bonds['datestamp'] == df_train_bonds['datestamp'].max()]
-    
-    # Select top N bonds based on signal strength
-    top_bonds = df_train_bonds_current.nlargest(n_selected_bonds, 'signal')
-    selected_bond_codes = top_bonds['bond_code'].tolist()
-    
-    # Print selected bonds for debugging
-    print(f'    Selected bonds: {selected_bond_codes}')
-    print(f'    Signal values: {top_bonds["signal"].round(4).tolist()}')
-    
-    # Create binary selection vector (1 for selected bonds, 0 for others)
-    bond_selection = df_train_bonds_current['bond_code'].isin(selected_bond_codes).astype(int)
     
     # optimisation objective
     def objective(weights, signal, prev_weights, turnover_lambda=0.1):
@@ -102,14 +143,6 @@ for i in range(len(df_signals)):
         port_duration = np.dot(weights, durations_today)
         return [100*(port_duration - (p_albi_md - p_active_md)), 100*((p_albi_md + p_active_md) - port_duration)]
     
-    # Bond selection constraint - only selected bonds can have non-zero weights
-    def bond_selection_constraint(weights):
-        return np.sum(weights * (1 - bond_selection))  # Should be 0 (no weight on unselected bonds)
-    
-    # Target allocation constraint - selected bonds should sum to target allocation
-    def target_allocation_constraint(weights):
-        return np.sum(weights * bond_selection) - target_allocation  # Should be 0
-    
     # Optimization setup
     turnover_lambda = 0.5
     bounds = [weight_bounds] * 10
@@ -118,23 +151,10 @@ for i in range(len(df_signals)):
         {'type': 'ineq', 'fun': lambda w: duration_constraint(w, df_train_bonds_current['modified_duration'])[0]},
         {'type': 'ineq', 'fun': lambda w: duration_constraint(w, df_train_bonds_current['modified_duration'])[1]}
     ]
-    
-    # Modify objective to include bond selection and target allocation as penalties
-    def objective_with_penalties(weights, signal, prev_weights, turnover_lambda=0.1, selection_penalty=1000, allocation_penalty=100):
-        turnover = np.sum(np.abs(weights - prev_weights))
-        selection_violation = np.sum(weights * (1 - bond_selection))  # Penalty for selecting unselected bonds
-        allocation_violation = abs(np.sum(weights * bond_selection) - target_allocation)  # Penalty for wrong allocation
-        return -(np.dot(weights, signal) - turnover_lambda * turnover - selection_penalty * selection_violation - allocation_penalty * allocation_violation)
 
-    result = minimize(objective_with_penalties, prev_weights, args=(df_train_bonds_current['signal'], prev_weights, turnover_lambda), bounds=bounds, constraints=constraints)
+    result = minimize(objective, prev_weights, args=(df_train_bonds_current['signal'], prev_weights, turnover_lambda), bounds=bounds, constraints=constraints)
 
     optimal_weights = result.x if result.success else prev_weights
-    
-    # Debug information
-    print(f'    Optimization success: {result.success}')
-    print(f'    Selected bond weights: {[optimal_weights[i] for i, code in enumerate(df_train_bonds_current["bond_code"]) if code in selected_bond_codes]}')
-    print(f'    Total weight: {np.sum(optimal_weights):.4f}')
-    print(f'    Selected bonds total: {np.sum([optimal_weights[i] for i, code in enumerate(df_train_bonds_current["bond_code"]) if code in selected_bond_codes]):.4f}')
     weight_matrix_tmp = pd.DataFrame({'bond_code': df_train_bonds_current['bond_code'],
                                       'weight': optimal_weights,
                                       'datestamp': df_signals.loc[i, 'datestamp']})

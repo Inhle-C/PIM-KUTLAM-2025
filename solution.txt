@@ -5,6 +5,14 @@ pick most stable--> bonds
 
 negative correlation betwee stocks and bonds (retrun)
 
+Strategy #1():
+Analyzes all available bonds
+Selects the top 4 bonds based on signal strength
+Uses a signal that combines: md_per_conv*100 - top40_return/10 + comdty_fut/100
+2. Allocates 50% to Selected Bonds (Line 56)
+The remaining 50% is distributed among all bonds (including unselected ones)
+Selection constraints: Only selected bonds should get the target allocation
+
 My part steps:
 1. Analyze bond data to understand available bonds and their characteristics:
 Solution:
@@ -34,7 +42,33 @@ Bond characteristics (latest data):
 49897  SAGB_15_00 Bond             7.6974  0.1063    86.0299
 49898  SAGB_20_00 Bond             8.4355  0.1076   112.4413
 49899  SAGB_30_00 Bond             9.1738  0.1075   147.9167
-Modify the code to select only 3-4 best bonds instead of all 10
-Adjust weight allocation to 50-70% for selected bonds
-Update optimization constraints for the new bond selection
-Test the modified solution to ensure it works correctly
+
+2. Modify the code to select only 3-4 best bonds instead of all 10
+3. Adjust weight allocation to 50-70% for selected bonds
+4. Update optimization constraints for the new bond selection
+5. Test the modified solution to ensure it works correctly
+
+Pros:
+- More concentrated positions in your best picks
+- Higher potential returns if you pick the right bonds
+- Simpler portfolio management
+- Lower transaction costs
+Cons:
+- Higher concentration risk
+- Less diversification
+- More volatile portfolio
+- If one of your 4 picks performs poorly, it has a bigger impact
+
+
+Strategy 2 (Faheem Kolia reccomendation):
+(it analyzes all 10 bonds, picks the best 8, and gives the most stable one the highest weight (20%).)
+1. Implement a stability metric to identify the most stable bonds:
+
+Uses a comprehensive stability metric that considers:
+Sharpe ratio (30% weight)
+Inverse volatility (20% weight)
+Drawdown protection (20% weight)
+Consistency of positive returns (30% weight)
+
+2. Allocate 100% of portfolio to the most stable bonds  [20%, 20%, 15%, 15%, 10%, 10%, 5%, 5%]
+3. Test the new stability-based approach
