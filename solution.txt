@@ -1,0 +1,40 @@
+US usually indication factor for the rest of the world
+JSE shows all availbale stock= performance in this indicates GDP => use a favtors to adjust 
+
+pick most stable--> bonds
+
+negative correlation betwee stocks and bonds (retrun)
+
+My part steps:
+1. Analyze bond data to understand available bonds and their characteristics:
+Solution:
+
+python3 -c "
+import pandas as pd
+df = pd.read_csv('data/data_bonds.csv')
+print('Available bonds:')
+print(df['bond_code'].unique())
+print('\nBond characteristics (latest data):')
+latest = df[df['datestamp'] == df['datestamp'].max()]
+print(latest[['bond_code', 'modified_duration', 'yield', 'convexity']].round(4))
+"
+Available bonds:
+['SAGB_00_25 Bond' 'SAGB_02_00 Bond' 'SAGB_04_00 Bond' 'SAGB_05_00 Bond'
+ 'SAGB_07_00 Bond' 'SAGB_10_00 Bond' 'SAGB_12_00 Bond' 'SAGB_15_00 Bond'
+ 'SAGB_20_00 Bond' 'SAGB_30_00 Bond']
+
+Bond characteristics (latest data):
+             bond_code  modified_duration   yield  convexity
+49891  SAGB_02_00 Bond             1.8845  0.0807     3.6740
+49892  SAGB_04_00 Bond             3.4645  0.0848    13.0881
+49893  SAGB_05_00 Bond             4.1368  0.0877    19.1916
+49894  SAGB_07_00 Bond             5.2571  0.0936    32.8318
+49895  SAGB_10_00 Bond             6.4869  0.0998    54.2864
+49896  SAGB_12_00 Bond             7.0536  0.1034    67.6015
+49897  SAGB_15_00 Bond             7.6974  0.1063    86.0299
+49898  SAGB_20_00 Bond             8.4355  0.1076   112.4413
+49899  SAGB_30_00 Bond             9.1738  0.1075   147.9167
+Modify the code to select only 3-4 best bonds instead of all 10
+Adjust weight allocation to 50-70% for selected bonds
+Update optimization constraints for the new bond selection
+Test the modified solution to ensure it works correctly
