@@ -1,147 +1,126 @@
-![img](img/header.png)
+# Project README — Systematic Bond Strategy (team submission)
 
-# Welcome!
+## Objective
+Beat the ALBI benchmark by building and testing systematic bond allocation strategies using bond-level data and macro signals. We evaluate performance using walk-forward testing over 2023–2024 and enforce risk constraints (notably active modified duration).
 
-Welcome to the Prescient Coding Challenge 2025!
+---
 
-## The Problem Description
+## What we know / rationale
+- **US rates** are a strong global signal and commonly lead other markets.  
+- **JSE Top40** reflects local equity performance and is used as a proxy for local risk sentiment / GDP dynamics.  
+- **Stocks and bonds** tend to be negatively correlated in return; equity weakness often implies falling yields and higher bond prices — useful for directional signals.  
+- **Stable bonds** (low volatility, low duration shocks) are useful as a core sleeve to reduce turnover and stabilise returns.
 
-You have been provided with price and related market data for 10 SA Government Bonds. Your task is to generate 1-day-ahead trading signals for each bond. Additionally, you need to use these signals to select weights each day to form a portfolio. The performance of your selected portfolio will be evaluated based on the total return index over the evaluation (test) period relative to the FTSE/JSE All Bond Index (ALBI).
+---
 
-This type of trading is known as [active bond portfolio management](https://corporatefinanceinstitute.com/resources/career-map/sell-side/capital-markets/active-bond-portfolio-management/). You are only allowed [long positions](https://www.investopedia.com/ask/answers/100314/whats-difference-between-long-and-short-position-market.asp), i.e. your matrix of buys will only contain values between 0 and 0.2.
+## Team split
+- **Inhle**: stability/core sleeve, data exploration, portfolio construction for the stable allocation.  
+- **Devin**: macro-driven active sleeve and optimisation, model development for dynamic allocation.
 
-You are given files
+---
 
-1. `README.md` - this file
-2. `data_bonds.csv` - 1st data file
-4. `data_albi.csv` - 2nd data file
-5. `data_macro.csv` - 3rd data file
-6. `solution.py` - a skeleton structure with sample solution for the problem description in Python
-7. `solution.R` - a skeleton structure with sample solution for the problem description in R
+## Strategy 1 — Hybrid: 50% Stable + 50% Market-based (original idea)
+**Summary**
+- Analyse all available bonds.
+- Select top 4 bonds by a stability/signal metric.
+- Use the signal `md_per_conv*100 - top40_return/10 + comdty_fut/100` for ranking.
+- Allocate **50%** to the selected bonds (equal split among them).
+- Allocate remaining **50%** across all bonds using the dynamic optimiser.
+- Selection constraints: only the selected bonds should receive the target 50% stable allocation.
 
-## The Data
+**Steps (Inhle)**
+1. Inspect available bonds and their latest characteristics (duration, yield, convexity).  
+2. Select 3–4 best bonds (by chosen stability metric or signal).  
+3. Fix stable allocation (e.g., 12.5% per bond for four bonds = 50%).  
+4. Optimise the remaining 50% dynamically across all bonds (or across the remaining bonds).  
+5. Update constraints: ensure the stable sleeve is fixed and that the dynamic sleeve sums to its budget.  
+6. Test and validate.
 
-The data provided contains daily data for both the individual bonds as well as the Bond Index.
+**Pros**
+- Concentrated exposure to your best picks.
+- Potentially higher returns if top picks are correct.
+- Lower transaction costs for the stable sleeve.
 
-- The file `data_bonds.csv` contains daily yield, modified duration, convexity and return data for each security and trading day
+**Cons**
+- Higher concentration risk.
+- Less diversification and potentially higher volatility.
 
-- The file `data_albi.csv` contains the same data, but for the ALBI.
+---
 
-- The file `data_macro.csv` contains macroeconomic data to assist with generating trading signals.
+## Strategy 2 — Stability-first (Faheem Kolia’s recommendation)
+**Summary**
+- Build a stability metric using:
+  - Sharpe ratio (30%),
+  - Inverse volatility (20%),
+  - Drawdown protection (20%),
+  - Consistency of positive returns (30%).
+- Rank bonds by the composite stability score.
+- Allocate **100%** to the top stable bonds (example weights: `[20%, 20%, 15%, 15%, 10%, 10%, 5%, 5%]` over top 8).
+- Backtest and compare to ALBI.
 
-A brief description of the columns in the data are:
+**Pros**
+- Very low turnover (stable core).
+- Clear, defensible allocation based on risk-adjusted stability.
 
-- `datestamp` - close of business day
-- `bond_code` - the instrument code
-- `bond_name` - the instrument name
-- `yield` - the close of day yield
-- `modified_duration` - close of day modified duration
-- `convexity` - close of day convexity
-- `return` - daily return of the instrument at close of day
+**Cons**
+- May miss opportunistic macro-driven moves.
+- Might underperform during strong directional market moves.
 
-[Bond Basics Reading](https://www.investopedia.com/articles/bonds/08/bond-market-basics.asp)
+---
 
-[Duration and Convexity Reading](https://madisoninvestments.com/resources/interest-rate-risk-understanding-duration-convexity)
+## Strategy 3 — Final working strategy (Devin’s macro-driven model)
+**Summary**
+- Uses macro predictors (JSE, US 2y/10y, commodities) to forecast yield moves.
+- Uses bond features (yield momentum, convexity, volatility, duration shocks) to create per-bond signals.
+- Runs constrained optimisation to maximise signal subject to:
+  - weights ∈ [0, 0.2],
+  - weights sum to 1 (or to the active sleeve budget),
+  - active modified duration within ±1.2y (or within chosen cap).
+- Walk-forward testing over 2023–2024 with turnover penalties and transaction cost assumptions.
 
-## The Output
+**Enhancement**
+- Add a **stability sleeve** (40% fixed) that holds the top-4 stable bonds (unchanging within a chosen update frequency), while the remaining 60% is optimised dynamically.
 
-We are interested in the total payoff for the portfolio in the testing period `2023-01-03` to `2024-12-31`. The high level steps are:
+---
 
-1. Generate buy-signals
-2. Create a buy-matrix of weights, ranging from 0 to 0.2, with each row summing to 1 (i.e. 100% allocation)
-3. Generate payoff chart
+## Implementing the 40% Stability Sleeve (recommended approach)
+**Design**
+- **Core sleeve** = 40% of portfolio. This is equally split across a top-4 stable basket (10% each). The core basket is either:
+  - Fixed for the entire backtest, or
+  - Rebalanced/reselected infrequently (quarterly or every N trading days).
+- **Active sleeve** = 60% of portfolio. Run the existing optimiser on the remaining universe (all bonds not in the core basket, or all bonds but with the core weights fixed), subject to the same constraints scaled to the 60% budget.
 
-Your buy-matrix will create your payoff chart using the `plot_payoff` function.
+**Selection filters for top-4 stable bonds (examples)**
+- Lowest 90-day return volatility.  
+- Lowest 90-day duration spike metric.  
+- High liquidity proxy (if available).  
+- Or composite stability score (Sharpe, inverse vol, drawdown protection).
 
-## The Rules
+**Practical implementation details**
+1. Compute stability score or volatility on `df_train_bonds`.
+2. Pick `stable_bonds = top4_by_stability`.
+3. Fix `w_stable = {bond: 0.10 for bond in stable_bonds}`.
+4. Build optimiser for active sleeve:
+   - Let `w_active` be optimizer variables for the active bond set.
+   - Constrain `sum(w_active) == 0.60`.
+   - Duration constraint should consider combined portfolio: `port_md_total = sum(w_stable*md_stable) + sum(w_active*md_active)`. Enforce `|port_md_total - bench_md| <= p_active_md`.
+   - Bounds for `w_active` remain [0, 0.2] but you may want to rescale or cap per-instrument active weight to avoid exceeding total limits.
+5. After optimisation, final weights = union of `w_stable` and `w_active`.
+6. Calculate turnover relative to previous *full* portfolio (core + active) to correctly charge turnover costs.
 
-- Your portfolio weights must sum to 100%
-- Weights must be positive, ranging from 0% to 20%. 
-- The modified duration of your portfolio on each day must be within 1.5 of the ALBI. e.g. If the modified duration of the ALBI on a given day is 6, your portfolio's modified duration must be between 4.5 and 7.5.
-- You will face trading costs when repositioning the portfolio. This is calculated as 0.01% * portfolio modified duration * turnover. For example, if you change 20% of the portfolio's holdings on a given day, and the portfolio initially had a modified duration of 7, the trading cost is 0.01% * 7 * 20% = 0.014% for the day
-- You may not use any external data sets in your model
-- Your script must run from start to end within 10 minutes
+**Example pseudo-code snippet**
+```python
+# choose stable bonds (from training data)
+stable_bonds = df_train_bonds.groupby('bond_code')['return'].std().nsmallest(4).index.tolist()
+w_stable = {b: 0.10 for b in stable_bonds}  # 40% core
 
-## Hints
+# define active universe
+active_bonds = [b for b in bond_codes if b not in stable_bonds]
 
-- You may use a subset of the data.
-- You may engineer features using the existing features.
-- You may use pure rule based, quant, or ML methods.
-- You may create more than 1 model to generate buy-signals
-- ChatGPT is allowed
+# objective uses signals for the active universe; optimise for sum(weights) == 0.60
+# duration constraint must include the fixed sleeve contribution:
+fixed_md = np.dot([w_stable[b] for b in stable_bonds], df_train_bonds_current.set_index('bond_code').loc[stable_bonds]['modified_duration'])
+# then enforce: abs(fixed_md + dot(w_active, md_active) - bench_md) <= p_active_md
 
-## Running the Sample Solution
-
-- We have included a requirements.txt file with the required modules for the python solution.
-- You can install these by running the below in the terminal
-```bash
-python -m pip install -r requirements.txt
-```
-- The list of required R packages are included in the sample solution, along with the code to install them if not already installed.
-- You may use other packages if required for your own solution.
-
-## Getting The Project On Your Computer (GitHub)
-
-
-1. Sign in or sign up to GitHub.
-2. On the Coding Challenge repo page, fork the repo as shown below.
-
-![alt text](img/image2.png)
-
-3. Once the project shows as a repo on your GitHub profile, clone the repo.
-
-![alt text](img/image3.png)
-
-4. Open a terminal in the folder you will be working in, and run `git clone "your https url"`
-
-![alt text](img/image4.png)
-
-4. Since this is on your personal GitHub profile, you can work on your `main` branch.
-
-## How To Submit Your Answer
-
-1. Assuming you are working on your `main` branch
-2. `git add .`
-3. `git commit -m 'Your Team Name'`
-4. `git push origin main`
-5. Make sure that your changes are only in one of either a `solution.py` or a `solution.R`.
-6. You should see your changes on your repo.
-7. On the "Pull Requests" tab, select "New pull request"
-
-![alt text](img/image5.png)
-
-8. The GitHub summary should mention only 1 file change
-9. Select "Create pull request"
-10. Add your team name and short description of how you solved the problem. Confirm the "Create pull request"
-
-![alt text](img/image6.png)
-
-11. You should now be able to see your team's pull request on our repository's list of pull requests.
-
-![alt text](img/image7.png)
-
-
-## Grading Guide
-
-The table below is the 1st grading guide.
-
-| Step | Criteria                                                                 | Action                                         |
-|------|--------------------------------------------------------------------------|------------------------------------------------|
-| 1    | Submitted on 20 September 2025 before 2pm?                                  | Yes - next step, no - disqualified             |
-| 2    | No tampering with data sets and no additional data imports of any kind?                                              | Yes - next step, no - disqualified             |
-| 3    | Script runs without intervention from us?                               | Yes - next step, no - disqualified             |
-| 4    | Script runs within 10 minutes?                                            | Yes - next step, no - disqualified             |
-| 5    | Does it produce the same solution on consecutive runs? Simulation and stochastic estimation needs to be highly stable. | Yes - next step, no - disqualified             |
-| 6    | Does not contain look-ahead bias? Hard-coded stock picking in this case will be considered look-ahead because you can see future prices. | Yes - next step, no - disqualified             |
-| 7    | Does the solution satisfy the rules? Weights between 0% - 20%, Weights for each day sum to 100%, Active Modified Duration strictly between &plusmn; 1.5         | Yes - next step, no - disqualified             |
-| 8    | Successfully feeds into TRI function and produces desired chart?         | Yes - next step, no - disqualified             |
-
-The 2nd grading is a combination of the TRI final level and the solution originality decided by the Prescient Investment Management Team.
-
-# Download Links
-
-1. [Git](https://git-scm.com/downloads)
-2. [Python ](https://www.python.org/downloads/)
-3. [VS Code](https://code.visualstudio.com/download)
-4. [R Base](https://cran.r-project.org/)
-5. [R Studio](https://posit.co/downloads/)
+# run minimise(...) for w_active with bounds and constraints
+# combine: final_weights = {**w_stable, **dict(zip(active_bonds, w_active_opt))}
